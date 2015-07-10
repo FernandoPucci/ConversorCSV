@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="templatePlt2" language="groovy" columnCount="3" pageWidth="453" pageHeight="487" columnWidth="137" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75bdb47b-0e93-425e-a626-5b7402c2f8eb">
+	<property name="ireport.zoom" value="8.0"/>
+	<property name="ireport.x" value="55"/>
+	<property name="ireport.y" value="719"/>
+	<queryString>
+		<![CDATA[select
+
+codigo_prestador ,
+ nome_operadora   ,
+ codigo_filial    ,
+ nome_filial      ,
+ regiao_saude     ,
+ sub_regiao_saude ,
+ codigo_unidade   ,
+ nome_unidade     ,
+ codigo_rede      ,
+ nome_rede        ,
+ tipo_pessoa      ,
+ capitulo_orientador ,
+ elemento_divulgacao ,
+ nome_prestador      ,
+ tipo_logadouro  AS Rua     ,
+ endereco_prestador  ,
+ numero              ,
+ complemento         ,
+ municipio           ,
+ bairro              ,
+ cep                 ,
+ uf                  ,
+ ddd_telefone1       ,
+ telefone1           ,
+ ddd_telefone2       ,
+ telefone2           ,
+ dddfax              ,
+ fax                 ,
+ direciona           ,
+ email               ,
+ tipo_equipamento    ,
+ is_comercializado   ,
+ modelo_orientador   ,
+ redepropria         ,
+ classificacoes
+
+from
+modelo
+--where nome_prestador ='ADRIANO VERAS OLIVEIRA'
+order by
+municipio,
+capitulo_orientador,
+elemento_divulgacao
+
+
+
+]]>
+	</queryString>
+	<field name="CODIGO_PRESTADOR" class="java.math.BigDecimal"/>
+	<field name="NOME_OPERADORA" class="java.lang.String"/>
+	<field name="CODIGO_FILIAL" class="java.lang.String"/>
+	<field name="NOME_FILIAL" class="java.lang.String"/>
+	<field name="REGIAO_SAUDE" class="java.lang.String"/>
+	<field name="SUB_REGIAO_SAUDE" class="java.lang.String"/>
+	<field name="CODIGO_UNIDADE" class="java.lang.String"/>
+	<field name="NOME_UNIDADE" class="java.lang.String"/>
+	<field name="CODIGO_REDE" class="java.lang.String"/>
+	<field name="NOME_REDE" class="java.lang.String"/>
+	<field name="TIPO_PESSOA" class="java.lang.String"/>
+	<field name="CAPITULO_ORIENTADOR" class="java.lang.String"/>
+	<field name="ELEMENTO_DIVULGACAO" class="java.lang.String"/>
+	<field name="NOME_PRESTADOR" class="java.lang.String"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="ENDERECO_PRESTADOR" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="MUNICIPIO" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="UF" class="java.lang.String"/>
+	<field name="DDD_TELEFONE1" class="java.lang.String"/>
+	<field name="TELEFONE1" class="java.lang.String"/>
+	<field name="DDD_TELEFONE2" class="java.lang.String"/>
+	<field name="TELEFONE2" class="java.lang.String"/>
+	<field name="DDDFAX" class="java.lang.String"/>
+	<field name="FAX" class="java.lang.String"/>
+	<field name="DIRECIONA" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="TIPO_EQUIPAMENTO" class="java.lang.String"/>
+	<field name="IS_COMERCIALIZADO" class="java.lang.String"/>
+	<field name="MODELO_ORIENTADOR" class="java.lang.String"/>
+	<field name="REDEPROPRIA" class="java.lang.String"/>
+	<field name="CLASSIFICACOES" class="java.lang.String"/>
+	<variable name="MUNICIPIO_1" class="java.lang.Integer" resetType="Group" resetGroup="GrupoCidade" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{MUNICIPIO}]]></variableExpression>
+	</variable>
+	<group name="GrupoCidade">
+		<groupExpression><![CDATA[$F{MUNICIPIO}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement x="0" y="0" width="137" height="24" uuid="41246de4-334a-4b40-afb9-493cb0c7e306"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="137" y="0" width="1" height="25" uuid="9b3ba4f4-4d85-48a9-8825-4a47754f451f"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="1" y="24" width="137" height="1" uuid="6e3c9b7b-b6c1-4b6c-b0f6-178e7fd3bcc7"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="GrupoCapOrientador">
+		<groupExpression><![CDATA[$F{CAPITULO_ORIENTADOR}]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<textField>
+					<reportElement x="0" y="0" width="137" height="25" uuid="d6fd9b00-9210-4969-b6c6-71c9a00c304e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CAPITULO_ORIENTADOR}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="137" y="0" width="1" height="25" uuid="8fa36fad-e135-4666-a5a5-bf0a6ac3bdcd"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="1" y="25" width="137" height="1" uuid="8205fab4-fad3-4233-82a4-dfedc9fc3634"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="GruopoElemDivulgacao">
+		<groupExpression><![CDATA[$F{ELEMENTO_DIVULGACAO}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<textField>
+					<reportElement x="0" y="3" width="137" height="28" uuid="4ac4f9da-582e-4b66-adf8-d8035f0366c4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ELEMENTO_DIVULGACAO}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="137" y="0" width="1" height="31" uuid="11af6b26-2542-46c0-9d23-79f101f400fa"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="0" y="3" width="137" height="1" uuid="09dcecba-369b-4875-8f96-5934c8e9753e"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="0" y="30" width="137" height="1" uuid="8ed81014-d0ea-4e82-9184-5e24a74518d7"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="25" width="69" height="10" uuid="b24a00aa-aec2-4c90-bc91-c7d2a2e0e527"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<text><![CDATA[www.amil.com.br]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="34" width="412" height="1" uuid="829333cc-7592-43c5-94ea-067df6c66775"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="54">
+			<textField>
+				<reportElement x="1" y="4" width="134" height="20" uuid="50f8e9e5-1027-453e-9690-c45a54e51d8f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="6" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOME_PRESTADOR}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="24" width="32" height="16" uuid="943c1214-0a51-4461-bda7-f8fa8dfaaf61"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RUA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="32" y="24" width="79" height="16" uuid="2cfdcafb-d472-4ded-b5ae-9ead320dd942"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENDERECO_PRESTADOR}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="111" y="24" width="21" height="16" uuid="be3442d9-bfcf-4c72-a505-61dc2b53bda2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMERO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="39" width="57" height="13" uuid="f0c5ee71-4a13-47c2-af28-2bdb527cd6ea"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TELEFONE1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="57" y="39" width="77" height="13" uuid="09db758b-c061-40ce-9922-e66e326b837f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TELEFONE2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="137" y="0" width="1" height="54" uuid="f9f8e53c-101c-4a83-9726-223e263fe6fe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
