@@ -16,11 +16,17 @@
             <artifactId>commons-csv</artifactId>
             <version>1.1</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>3.5.3</version>
-        </dependency>
+        </dependency>-->
+        <dependency>
+	<groupId>net.sf.jasperreports</groupId>
+	<artifactId>jasperreports</artifactId>
+	<version>5.6.0</version>
+</dependency>
+
         <dependency>
             <groupId>org.jsefa</groupId>
             <artifactId>jsefa</artifactId>
