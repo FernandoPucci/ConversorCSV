@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="templatePlt2" language="groovy" columnCount="3" pageWidth="453" pageHeight="487" columnWidth="137" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75bdb47b-0e93-425e-a626-5b7402c2f8eb">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="templatePlt2" language="java" columnCount="3" pageWidth="453" pageHeight="487" columnWidth="137" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75bdb47b-0e93-425e-a626-5b7402c2f8eb">
 	<property name="ireport.zoom" value="8.0"/>
 	<property name="ireport.x" value="55"/>
 	<property name="ireport.y" value="719"/>
@@ -54,46 +54,46 @@ elemento_divulgacao
 
 ]]>
 	</queryString>
-	<field name="CODIGO_PRESTADOR" class="java.math.BigDecimal"/>
-	<field name="NOME_OPERADORA" class="java.lang.String"/>
-	<field name="CODIGO_FILIAL" class="java.lang.String"/>
-	<field name="NOME_FILIAL" class="java.lang.String"/>
-	<field name="REGIAO_SAUDE" class="java.lang.String"/>
-	<field name="SUB_REGIAO_SAUDE" class="java.lang.String"/>
-	<field name="CODIGO_UNIDADE" class="java.lang.String"/>
-	<field name="NOME_UNIDADE" class="java.lang.String"/>
-	<field name="CODIGO_REDE" class="java.lang.String"/>
-	<field name="NOME_REDE" class="java.lang.String"/>
-	<field name="TIPO_PESSOA" class="java.lang.String"/>
-	<field name="CAPITULO_ORIENTADOR" class="java.lang.String"/>
-	<field name="ELEMENTO_DIVULGACAO" class="java.lang.String"/>
-	<field name="NOME_PRESTADOR" class="java.lang.String"/>
-	<field name="RUA" class="java.lang.String"/>
-	<field name="ENDERECO_PRESTADOR" class="java.lang.String"/>
-	<field name="NUMERO" class="java.lang.String"/>
-	<field name="COMPLEMENTO" class="java.lang.String"/>
-	<field name="MUNICIPIO" class="java.lang.String"/>
-	<field name="BAIRRO" class="java.lang.String"/>
-	<field name="CEP" class="java.lang.String"/>
-	<field name="UF" class="java.lang.String"/>
-	<field name="DDD_TELEFONE1" class="java.lang.String"/>
-	<field name="TELEFONE1" class="java.lang.String"/>
-	<field name="DDD_TELEFONE2" class="java.lang.String"/>
-	<field name="TELEFONE2" class="java.lang.String"/>
-	<field name="DDDFAX" class="java.lang.String"/>
-	<field name="FAX" class="java.lang.String"/>
-	<field name="DIRECIONA" class="java.lang.String"/>
-	<field name="EMAIL" class="java.lang.String"/>
-	<field name="TIPO_EQUIPAMENTO" class="java.lang.String"/>
-	<field name="IS_COMERCIALIZADO" class="java.lang.String"/>
-	<field name="MODELO_ORIENTADOR" class="java.lang.String"/>
-	<field name="REDEPROPRIA" class="java.lang.String"/>
-	<field name="CLASSIFICACOES" class="java.lang.String"/>
-	<variable name="MUNICIPIO_1" class="java.lang.Integer" resetType="Group" resetGroup="GrupoCidade" calculation="DistinctCount">
-		<variableExpression><![CDATA[$F{MUNICIPIO}]]></variableExpression>
+	<field name="codigoPrestador" class="java.math.BigDecimal"/>
+	<field name="nomeOperadora" class="java.lang.String"/>
+	<field name="codigoFilial" class="java.lang.String"/>
+	<field name="nomeFilial" class="java.lang.String"/>
+	<field name="regiaoSaude" class="java.lang.String"/>
+	<field name="subRegiaoSaude" class="java.lang.String"/>
+	<field name="codigoUnidade" class="java.lang.String"/>
+	<field name="nomeUnidade" class="java.lang.String"/>
+	<field name="codigoRede" class="java.lang.String"/>
+	<field name="nomeRede" class="java.lang.String"/>
+	<field name="tipoPessoa" class="java.lang.String"/>
+	<field name="capituloOrientador" class="java.lang.String"/>
+	<field name="elementoDivulgacao" class="java.lang.String"/>
+	<field name="nomePrestador" class="java.lang.String"/>
+	<field name="tipoLogradouro" class="java.lang.String"/>
+	<field name="enderecoPrestador" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String"/>
+	<field name="municipio" class="java.lang.String"/>
+	<field name="bairro" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="uf" class="java.lang.String"/>
+	<field name="dddTelefone1" class="java.lang.String"/>
+	<field name="telefone1" class="java.lang.String"/>
+	<field name="dddTelefone2" class="java.lang.String"/>
+	<field name="telefone2" class="java.lang.String"/>
+	<field name="dddFax" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="direciona" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="tipoEquipamento" class="java.lang.String"/>
+	<field name="isComercializado" class="java.lang.String"/>
+	<field name="modeloOrientador" class="java.lang.String"/>
+	<field name="redePropria" class="java.lang.String"/>
+	<field name="classificacoes" class="java.lang.String"/>
+	<variable name="municipio_1" class="java.lang.Integer" resetType="Group" resetGroup="GrupoCidade" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{municipio}]]></variableExpression>
 	</variable>
 	<group name="GrupoCidade">
-		<groupExpression><![CDATA[$F{MUNICIPIO}]]></groupExpression>
+		<groupExpression><![CDATA[$F{municipio}]]></groupExpression>
 		<groupHeader>
 			<band height="25">
 				<textField>
@@ -101,7 +101,7 @@ elemento_divulgacao
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="16" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="137" y="0" width="1" height="25" uuid="9b3ba4f4-4d85-48a9-8825-4a47754f451f"/>
@@ -119,7 +119,7 @@ elemento_divulgacao
 		</groupHeader>
 	</group>
 	<group name="GrupoCapOrientador">
-		<groupExpression><![CDATA[$F{CAPITULO_ORIENTADOR}]]></groupExpression>
+		<groupExpression><![CDATA[$F{capituloOrientador}]]></groupExpression>
 		<groupHeader>
 			<band height="26">
 				<textField>
@@ -127,7 +127,7 @@ elemento_divulgacao
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="8" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{CAPITULO_ORIENTADOR}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{capituloOrientador}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="137" y="0" width="1" height="25" uuid="8fa36fad-e135-4666-a5a5-bf0a6ac3bdcd"/>
@@ -145,7 +145,7 @@ elemento_divulgacao
 		</groupHeader>
 	</group>
 	<group name="GruopoElemDivulgacao">
-		<groupExpression><![CDATA[$F{ELEMENTO_DIVULGACAO}]]></groupExpression>
+		<groupExpression><![CDATA[$F{elementoDivulgacao}]]></groupExpression>
 		<groupHeader>
 			<band height="31">
 				<textField>
@@ -153,7 +153,7 @@ elemento_divulgacao
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{ELEMENTO_DIVULGACAO}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{elementoDivulgacao}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="137" y="0" width="1" height="31" uuid="11af6b26-2542-46c0-9d23-79f101f400fa"/>
@@ -200,42 +200,42 @@ elemento_divulgacao
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font size="6" isBold="true" isStrikeThrough="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{NOME_PRESTADOR}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nomePrestador}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="1" y="24" width="32" height="16" uuid="943c1214-0a51-4461-bda7-f8fa8dfaaf61"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{RUA}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipoLogradouro}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="32" y="24" width="79" height="16" uuid="2cfdcafb-d472-4ded-b5ae-9ead320dd942"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ENDERECO_PRESTADOR}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{enderecoPrestador}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="111" y="24" width="21" height="16" uuid="be3442d9-bfcf-4c72-a505-61dc2b53bda2"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{NUMERO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="1" y="39" width="57" height="13" uuid="f0c5ee71-4a13-47c2-af28-2bdb527cd6ea"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{TELEFONE1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{telefone1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="57" y="39" width="77" height="13" uuid="09db758b-c061-40ce-9922-e66e326b837f"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{TELEFONE2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{telefone2}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="137" y="0" width="1" height="54" uuid="f9f8e53c-101c-4a83-9726-223e263fe6fe"/>

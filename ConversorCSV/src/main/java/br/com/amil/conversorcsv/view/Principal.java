@@ -14,16 +14,20 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
-
+    
     List<Relatorio> relatorios;
     File arquivoSelecionado;
-
+    //
+    RelatorioController r;
+    
     public Principal() {
-
+        
         initComponents();
+        r = new RelatorioController(this);
         habilitaLabels(false);
+        habilitaGeracaoInsercao(false);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,6 +42,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemSelecionarArquivo = new javax.swing.JMenuItem();
+        jMenuItemSalvarRelatorio = new javax.swing.JMenuItem();
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,12 +74,14 @@ public class Principal extends javax.swing.JFrame {
 
         jTextAreaLog.setColumns(20);
         jTextAreaLog.setRows(5);
+        jTextAreaLog.setEnabled(false);
         jScrollPane1.setViewportView(jTextAreaLog);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 170, 540, 240);
 
         jButtonCarregarArquivo.setText("Carregar Arquivo");
+        jButtonCarregarArquivo.setEnabled(false);
         jButtonCarregarArquivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCarregarArquivoActionPerformed(evt);
@@ -93,6 +100,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemSelecionarArquivo);
 
+        jMenuItemSalvarRelatorio.setText("Salvar Relatório");
+        jMenuItemSalvarRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalvarRelatorioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemSalvarRelatorio);
+
         jMenuItemSair.setText("Sair");
         jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,59 +124,78 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemSelecionarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSelecionarArquivoActionPerformed
-
+        
         int returnVal = jFileChooser1.showOpenDialog(this);
-
+        
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-
+            
             arquivoSelecionado = jFileChooser1.getSelectedFile();
             appendLista("Arquivo Selecionado");
+            jButtonCarregarArquivo.setEnabled(true);
             habilitaLabels(true);
-
+            
         } else {
-             appendLista("Acesso a arquivo cancelado pelo usuário.");
+            appendLista("Acesso a arquivo cancelado pelo usuário.");
         }
     }//GEN-LAST:event_jMenuItemSelecionarArquivoActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         int opcao = JOptionPane.showConfirmDialog(this, "Sair?", "Confirma Sair?", JOptionPane.YES_NO_OPTION);
-
+        
         if (opcao == 0) {
             System.exit(0);
-
+            
         }
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jButtonVisualizarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarDadosActionPerformed
-
+        
         ListaDadosView ldv = new ListaDadosView(relatorios);
         
         ldv.setVisible(true);
         
-        
-        
+
     }//GEN-LAST:event_jButtonVisualizarDadosActionPerformed
 
     private void jButtonCarregarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarregarArquivoActionPerformed
-      try {
-
-            RelatorioController r = new RelatorioController(this);
+        try {
             
-            r.carregaListaRelatorio(arquivoSelecionado);
+            r = new RelatorioController(this);
+            
+            r.carregaListaRelatorioFromFile(arquivoSelecionado);
             relatorios = r.getListaRelatorios();
-
+            
             for (Relatorio rl : relatorios) {
-
+                
                 System.out.println(rl.toString());
-
+                
             }
-
+            
+            habilitaGeracaoInsercao(true);
+            
         } catch (Exception ex) {
-
+            
             JOptionPane.showMessageDialog(this, "Erro: ", ex.getMessage(), JOptionPane.ERROR_MESSAGE);
-
+            
         }
     }//GEN-LAST:event_jButtonCarregarArquivoActionPerformed
+
+    private void jMenuItemSalvarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalvarRelatorioActionPerformed
+        
+        try {
+            
+            r = new RelatorioController(this);
+            
+            r.setListaRelatorio(relatorios);
+            r.getThreadGerarRelatorio().start();
+            
+        } catch (Exception ex) {
+            
+            JOptionPane.showMessageDialog(this, "Erro: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            
+        }
+
+    }//GEN-LAST:event_jMenuItemSalvarRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,18 +231,36 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private void habilitaLabels(boolean habilita) {
-
+        
         jLabel1.setVisible(habilita);
         jLabelFilename.setVisible(habilita);
-
+        
         jLabelFilename.setText(habilita ? arquivoSelecionado.getAbsolutePath() : "");
-
+        
     }
-
+    
+    private void habilitaGeracaoInsercao(boolean habilita){
+        
+        
+    jButtonVisualizarDados.setEnabled(habilita);
+    jMenuItemSalvarRelatorio.setEnabled(habilita);
+    
+    }
+    
+    public void habilitaTudo(boolean habilita){
+    
+    jButtonCarregarArquivo.setEnabled(habilita);
+    jButtonVisualizarDados.setEnabled(habilita);
+    jMenuItemSalvarRelatorio.setEnabled(habilita);
+    jMenuItemSelecionarArquivo.setEnabled(habilita);
+    
+        
+    }
+    
     public void appendLista(String texto) {
-
+        
         StringBuilder sb = new StringBuilder();
         sb.append(jTextAreaLog.getText());
         jTextAreaLog.setText("");
@@ -217,7 +269,7 @@ public class Principal extends javax.swing.JFrame {
         sb.append(texto);
         sb.append("\n");
         jTextAreaLog.setText(sb.toString());
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -229,6 +281,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenuItem jMenuItemSalvarRelatorio;
     private javax.swing.JMenuItem jMenuItemSelecionarArquivo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaLog;
